@@ -12,28 +12,36 @@ class Client
     /**
      * @var string
      */
-    protected $apiKey;
+    protected $username;
+
+    /**
+     * @var string
+     */
+    protected $password;
 
     /**
      * Create an instance of the DatHost Client.
      *
-     * @param string $apiKey
+     * @param string $username
+     * @param string $password
      * @return Client
      */
-    public static function create(string $apiKey)
+    public static function create(string $username, string $password)
     {
-        return new self($apiKey);
+        return new self($username, $password);
     }
 
 
     /**
      * Client constructor.
      *
-     * @param string $apiKey
+     * @param string $username
+     * @param string $password
      */
-    public function __construct(string $apiKey)
+    public function __construct(string $username, string $password)
     {
-        $this->apiKey = $apiKey;
+        $this->username = $username;
+        $this->password = $password;
     }
 
     /**
@@ -41,7 +49,7 @@ class Client
      */
     public function account(): AccountCategory
     {
-        return new AccountCategory();
+        return new AccountCategory($this->username, $this->password);
     }
 
     /**
@@ -49,7 +57,7 @@ class Client
      */
     public function domains(): DomainsCategory
     {
-        return new DomainsCategory();
+        return new DomainsCategory($this->username, $this->password);
     }
 
     /**
@@ -57,7 +65,7 @@ class Client
      */
     public function server(): ServerCategory
     {
-        return new ServerCategory();
+        return new ServerCategory($this->username, $this->password);
     }
 
     /**
@@ -65,6 +73,6 @@ class Client
      */
     public function servers(): ServersCategory
     {
-        return new ServersCategory();
+        return new ServersCategory($this->username, $this->password);
     }
 }

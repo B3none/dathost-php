@@ -2,7 +2,7 @@
 
 namespace B3none\DatHost\Categories;
 
-class ServerCategory
+class ServerCategory extends BaseCategory
 {
 
 }
