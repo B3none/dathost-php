@@ -1,0 +1,19 @@
+{
+    "name": "b3none/dathost-php",
+    "description": "A PHP library for the DatHost API.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alex Blackham",
+            "email": "ablackham2000@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "B3none\\DatHost\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.5"
+    }
+}
