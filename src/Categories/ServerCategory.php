@@ -13,7 +13,7 @@ class ServerCategory extends BaseCategory
 	public function createServer(array $serverDetails): array
 	{
 		$response = $this->guzzle->post('/game-servers', [
-			'body' => $serverDetails,
+			'form_params' => $serverDetails,
 		]);
 
 		$responseContents = $response->getBody()->getContents();
@@ -61,7 +61,7 @@ class ServerCategory extends BaseCategory
 	public function updateServer(string $serverId, array $serverDetails): array
 	{
 		$response = $this->guzzle->put("/game-servers/$serverId", [
-			'body' => $serverDetails,
+			'form_params' => $serverDetails,
 		]);
 
 		$responseContents = $response->getBody()->getContents();
