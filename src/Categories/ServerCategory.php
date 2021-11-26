@@ -245,4 +245,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Get server metrics
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function getServerMetrics(string $serverId): array
+	{
+		$response = $this->guzzle->get("/game-servers/$serverId/metrics");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
