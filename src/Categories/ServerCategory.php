@@ -226,4 +226,23 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Move a file/directory on the gameserver
+	 *
+	 * @param string $serverId
+	 * @param string $path
+	 * @param array $formData
+	 * @return array
+	 */
+	public function moveServerFile(string $serverId, string $path, array $formData): array
+	{
+		$response = $this->guzzle->put("/game-servers/$serverId/files/$path", [
+			'form_data' => $formData,
+		]);
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
