@@ -260,4 +260,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Generate a new FTP password
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function generateFtpPassword(string $serverId): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/regenerate-ftp-password");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
