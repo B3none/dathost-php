@@ -275,4 +275,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Reset all file changes and settings
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function resetServer(string $serverId): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/reset");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
