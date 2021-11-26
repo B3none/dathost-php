@@ -50,4 +50,22 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Update server details
+	 *
+	 * @param string $serverId
+	 * @param array $serverDetails
+	 * @return array
+	 */
+	public function updateServer(string $serverId, array $serverDetails): array
+	{
+		$response = $this->guzzle->put("/game-servers/$serverId", [
+			'body' => $serverDetails,
+		]);
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
