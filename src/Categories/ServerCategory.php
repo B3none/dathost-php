@@ -119,4 +119,24 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Get the last lines of backlog from the server console
+	 *
+	 * @param string $serverId
+	 * @param string $command
+	 * @return array
+	 */
+	public function sendConsoleCommand(string $serverId, string $command): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/console", [
+			'form_params' => [
+				'line' => $command,
+			],
+		]);
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
