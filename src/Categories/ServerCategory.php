@@ -172,4 +172,20 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Delete a file/directory from the gameserver
+	 *
+	 * @param string $serverId
+	 * @param string $path
+	 * @return array
+	 */
+	public function deleteServerFile(string $serverId, string $path): array
+	{
+		$response = $this->guzzle->delete("/game-servers/$serverId/files/$path");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
