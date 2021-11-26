@@ -83,4 +83,20 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Restore all files from a backup
+	 *
+	 * @param string $serverId
+	 * @param string $backupName
+	 * @return array
+	 */
+	public function restoreServerBackup(string $serverId, string $backupName): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/backups/$backupName/restore");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
