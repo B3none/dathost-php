@@ -121,7 +121,7 @@ class ServerCategory extends BaseCategory
 	}
 
 	/**
-	 * Get the last lines of backlog from the server console
+	 * Send a line of text to the server console
 	 *
 	 * @param string $serverId
 	 * @param string $command
