@@ -68,4 +68,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * List all available backups for this server
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function getServerBackups(string $serverId): array
+	{
+		$response = $this->guzzle->get("/game-servers/$serverId/backups");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
