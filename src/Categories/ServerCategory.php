@@ -20,4 +20,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Delete a server
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function deleteServer(string $serverId): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
