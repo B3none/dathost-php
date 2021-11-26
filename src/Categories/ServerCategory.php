@@ -29,7 +29,7 @@ class ServerCategory extends BaseCategory
 	 */
 	public function deleteServer(string $serverId): array
 	{
-		$response = $this->guzzle->post("/game-servers/$serverId");
+		$response = $this->guzzle->delete("/game-servers/$serverId");
 
 		$responseContents = $response->getBody()->getContents();
 
