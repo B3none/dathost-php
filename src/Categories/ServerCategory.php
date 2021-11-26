@@ -335,4 +335,23 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Unzip a file on the gameserver
+	 *
+	 * @param string $serverId
+	 * @param string $path
+	 * @param array $formData
+	 * @return array
+	 */
+	public function unzipServerFile(string $serverId, string $path, array $formData): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/unzip/$path", [
+			'form_data' => $formData,
+		]);
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
