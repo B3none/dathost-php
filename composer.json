@@ -2,6 +2,7 @@
     "name": "b3none/dathost-php",
     "description": "A PHP library for the DatHost API.",
     "type": "library",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Alex Blackham",
