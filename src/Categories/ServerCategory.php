@@ -290,4 +290,34 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Start a server
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function startServer(string $serverId): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/start");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
+
+	/**
+	 * Stop a server
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function stopServer(string $serverId): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/stop");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
