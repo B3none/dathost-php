@@ -154,4 +154,22 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * List files on gameserver
+	 *
+	 * @param string $serverId
+	 * @param array $queryData
+	 * @return array
+	 */
+	public function getServerFiles(string $serverId, array $queryData): array
+	{
+		$response = $this->guzzle->post("/game-servers/$serverId/files", [
+			'query' => $queryData,
+		]);
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
