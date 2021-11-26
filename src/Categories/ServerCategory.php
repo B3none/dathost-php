@@ -35,4 +35,19 @@ class ServerCategory extends BaseCategory
 
 		return json_decode($responseContents, true);
 	}
+
+	/**
+	 * Get all info about one gameserver
+	 *
+	 * @param string $serverId
+	 * @return array
+	 */
+	public function getServer(string $serverId): array
+	{
+		$response = $this->guzzle->get("/game-servers/$serverId");
+
+		$responseContents = $response->getBody()->getContents();
+
+		return json_decode($responseContents, true);
+	}
 }
